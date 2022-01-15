@@ -23,3 +23,5 @@ train["Age"] = train["Age"].fillna(train["Age"].median())
 train["Embarked"] = train["Embarked"].fillna("S")
 
 kesson_table(train)
+
+print('xxxxx')
