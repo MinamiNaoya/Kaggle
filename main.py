@@ -9,13 +9,17 @@ train_shape = train.shape
 
 
 def kesson_table(df):
-    null_val = df.isnull().sum(df)
+    null_val = df.isnull().sum()
     percent = 100 * df.isnull().sum()/len(df)
-    kesson_table=pd.concat([null_val, percent], axis=1)
-    kesson_table_ren_columns = kesson_table.rename(columns = {0: '欠損数', 1: '%'}
+    kesson_table = pd.concat([null_val, percent], axis=1)
+    kesson_table_ren_columns = kesson_table.rename(columns={0: '欠損数', 1: '%'}
     )
 
     return kesson_table_ren_columns
 
-de
+print(kesson_table(train))
+print(kesson_table(test))
+train["Age"] = train["Age"].fillna(train["Age"].median())
+train["Embarked"] = train["Embarked"].fillna("S")
 
+kesson_table(train)
